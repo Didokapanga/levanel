@@ -11,7 +11,7 @@ import { registerSW } from "virtual:pwa-register";
 // la mise à jour si nécessaire, mais n'est pas utilisé tout de suite.
 // Le warning TS est géré avec un commentaire ESLint.
 /* eslint-disable @typescript-eslint/no-unused-vars */
-const updateSW = registerSW({
+registerSW({
   onNeedRefresh() {
     console.log("Nouvelle version disponible. Rechargez pour mettre à jour !");
   },
@@ -19,6 +19,7 @@ const updateSW = registerSW({
     console.log("Application prête à fonctionner hors ligne.");
   },
 });
+
 /* eslint-enable @typescript-eslint/no-unused-vars */
 
 // ---------------------------------------------------

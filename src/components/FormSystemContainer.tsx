@@ -15,10 +15,16 @@ export const FormSystemContainer: React.FC<FormSystemContainerProps> = ({
     onSuccess,
     onCancel,
 }) => {
-
-    const handleSubmit = async (data: { name: string; sync_status: 'synced' | 'pending' | 'failed' }) => {
+    // onSubmit ne reçoit que le champ 'name'
+    const handleSubmit = async (data: { name: string }) => {
         try {
-            const system = await systemsService.create(data.name);
+            // Ajouter sync_status côté container
+            const payload = {
+                name: data.name,
+                sync_status: 'pending' as const,
+            };
+
+            const system = await systemsService.create(payload.name); // create peut utiliser payload.name
             console.log('Système créé ✅', system);
 
             if (onSuccess) onSuccess(system);
@@ -27,5 +33,11 @@ export const FormSystemContainer: React.FC<FormSystemContainerProps> = ({
         }
     };
 
-    return <FormSystem onSubmit={handleSubmit} onCancel={onCancel} initialData={initialData} />;
+    return (
+        <FormSystem
+            onSubmit={handleSubmit}
+            onCancel={onCancel}
+            initialData={initialData}
+        />
+    );
 };
