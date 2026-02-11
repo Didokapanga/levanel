@@ -1,0 +1,56 @@
+.dashboard-container {
+    display: flex;
+    height: 100%;
+    gap: 20px;
+    padding: 20px;
+    background-color: #f3f4f6;
+}
+
+/* Gauche (plus large) */
+.dashboard-left {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Droite (plus étroite) */
+.dashboard-right {
+    flex: 1;
+    background: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+/* Ligne cards */
+.dashboard-cards-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* Ligne basse */
+.dashboard-bottom-row {
+    min-height: 300px;
+    background: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.dashboard-bottom-row {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Chaque liste prendra 50% de la largeur sur grand écran */
+.dashboard-bottom-row>.dashboard-list {
+    flex: 1;
+}
+
+/* Responsive : empiler verticalement sur petit écran */
+@media (max-width: 768px) {
+    .dashboard-bottom-row {
+        flex-direction: column;
+    }
+}

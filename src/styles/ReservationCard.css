@@ -1,0 +1,158 @@
+.reservations-container {
+    display: grid;
+    gap: 24px;
+    padding: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.reservation-card {
+    position: relative;
+    background: linear-gradient(135deg, #ffffff, #f7f8fc);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden;
+}
+
+.reservation-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.reservation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.reservation-header h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #222;
+}
+
+.status-badge {
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 10;
+}
+
+.status-badge.pending {
+    background: #f0ad4e;
+}
+
+.status-badge.validated {
+    background: #5cb85c;
+}
+
+.status-badge.cancelled {
+    background: #d9534f;
+}
+
+.reservation-body {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.reservation-info p {
+    margin: 2px 0;
+    font-size: 0.95rem;
+    color: #444;
+}
+
+.segments-list {
+    background: #fff;
+    border-radius: 12px;
+    padding: 10px;
+    max-height: 220px;
+    overflow-y: auto;
+    border: 1px solid #e0e0e0;
+}
+
+.segment-item {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.segment-item p {
+    margin: 2px 0;
+}
+
+.segment-item:last-child {
+    border-bottom: none;
+}
+
+.totals {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid #eee;
+}
+
+.totals p {
+    font-weight: 700;
+    color: #222;
+}
+
+.reservation-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+}
+
+.reservation-actions button {
+    flex: 1;
+    margin-right: 8px;
+}
+
+.reservation-actions button:last-child {
+    margin-right: 0;
+}
+
+/* Scrollbar segments list */
+.segments-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.segments-list::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .reservations-container {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    .reservations-container {
+        grid-template-columns: 1fr;
+        padding: 16px;
+    }
+
+    .reservation-actions {
+        flex-direction: column;
+    }
+
+    .reservation-actions button {
+        margin: 4px 0;
+    }
+}
